@@ -54,26 +54,26 @@ namespace hw4_2_10_13 {
                 if (stock[0] > 0) {
                     Upgrade(tmp);
                     stock[0]--;
-                    SeedLabel.Text = $" ֦ : {stock[0]}";
+                    SeedLabel.Text = $"擁有: {stock[0]}";
                 }
-                if (stock[0] == 0) MessageBox.Show(" ؤl Χ  F", "ĵ i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (stock[0] == 0) MessageBox.Show("種子用完了", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 break;
             case Tools.MUCK:
                 if (Math.Abs(tmp.ImageIndex - 1.5) >= 1) break;
                 if (!tmp.mucked && stock[1] > 0) {
                     tmp.mucked = true;
                     stock[1]--;
-                    MuckLabel.Text = $" ֦ : {stock[1]}";
+                    MuckLabel.Text = $"擁有: {stock[1]}";
                     if (tmp.watered) Upgrade(tmp);
                 }
-                if (stock[1] == 0) MessageBox.Show(" ήƥΧ  F", "ĵ i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (stock[1] == 0) MessageBox.Show("肥料用完了", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 break;
             case Tools.SICKLE:
                 if (tmp.ImageIndex == 3) {
                     Upgrade(tmp);
                     tmp.ImageIndex = 0;
                     stock[2]++;
-                    FruitLabel.Text = $" ֦ : {stock[2]}";
+                    FruitLabel.Text = $"擁有: {stock[2]}";
                 }
                 break;
             default: break;
@@ -99,20 +99,20 @@ namespace hw4_2_10_13 {
         private void BuyBtn_Click(object sender, EventArgs e) {
             if (FruitCheckBox.Checked && stock[2] > 0) {
                 stock[2]--; money += 40;
-                FruitLabel.Text = $" ֦ : {stock[2]}";
+                FruitLabel.Text = $"擁有: {stock[2]}";
             }
 
             if (SeedCheckBox.Checked && money >= 10) {
                 stock[0]++; money -= 10;
-                SeedLabel.Text = $" ֦ : {stock[0]}";
+                SeedLabel.Text = $"擁有: {stock[0]}";
             }
 
             if (MuckCheckBox.Checked && money >= 10) {
                 stock[1]++; money -= 10;
-                MuckLabel.Text = $" ֦ : {stock[1]}";
+                MuckLabel.Text = $"擁有: {stock[1]}";
             }
 
-            MoneyLabel.Text = $"    : {money}";
+            MoneyLabel.Text = $"金錢: {money}";
         }
     }
 }
